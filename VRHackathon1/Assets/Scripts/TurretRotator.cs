@@ -9,15 +9,21 @@ public class TurretRotator : MonoBehaviour
     public float maxRotation = 45f;
     public GameObject player;
     public int Health = 0;
+    public Rigidbody snowballBullet;
+    public float BulletSpeed;
 
     private GameObject turret;
     private float FOV = 180f;
     Vector3 m_lastKnownPosition = Vector3.zero;
-
+    private Transform barrelEnd;
+    private const float shootDelay = 2f;
+    private static float shotDuration = 0;
+         
     // Use this for initialization
     void Start () {
         turret = transform.FindChild("Top").gameObject;
-	}
+        barrelEnd = transform.FindChild("Top").FindChild("Cannon_2").FindChild("BarrelEnd");
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -25,12 +31,27 @@ public class TurretRotator : MonoBehaviour
         if (LineOfSight(player.transform))
         {
             turret.transform.rotation = Quaternion.LookRotation(turret.transform.position - player.transform.position);
+
+            shotDuration -= Time.deltaTime;
+            if (shotDuration <= 0)
+            {
+                Shoot();
+                shotDuration = shootDelay;
+            }
         }
         else
         {
             //there is something obstructing the view
             turret.transform.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * RotateSpeed), 0f);
         }
+    }
+
+    private void Shoot()
+    {
+        Rigidbody bulletInstance;
+        bulletInstance = Instantiate(snowballBullet, barrelEnd.position, barrelEnd.rotation) as Rigidbody; //INSTANTIATING THE FLARE PROJECTILE
+
+        bulletInstance.AddForce(barrelEnd.forward * BulletSpeed); //ADDING FORWARD FORCE TO THE FLARE PROJECTILE
     }
 
     private void OnCollisionEnter(Collision collision)

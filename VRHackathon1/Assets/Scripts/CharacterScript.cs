@@ -49,6 +49,19 @@ public class CharacterScript : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Rigidbody body = collision.gameObject.GetComponent<Rigidbody>();
+            Debug.Log("Hard hit" + body.velocity.z);
+            if (body.velocity.z > -12)
+            {
+                Debug.Log("Dead");
+            }
+        }
+    }
+
     private static void MoveViaKeyboard(Transform transform, float moveSpeed)
     {
         if (Input.GetButton("Up"))
