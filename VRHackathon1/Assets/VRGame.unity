@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 43608008}
   - component: {fileID: 43608007}
   - component: {fileID: 43608006}
+  - component: {fileID: 43608010}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -187,6 +188,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 43608004}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &43608010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 43608004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69572601811dba84c8cac0350c50dc31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelName: Level2
+  LevelCompletedAudioClip: {fileID: 8300000, guid: 18e14522edc271a419cd3c1ec497bde6,
+    type: 3}
+  m_VRCameraFade: {fileID: 1850853278}
 --- !u!1001 &71360407
 Prefab:
   m_ObjectHideFlags: 0
@@ -2413,6 +2429,12 @@ Prefab:
     - {fileID: 11451356, guid: d95b7d2cb0c438a478dececc251bb286, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d95b7d2cb0c438a478dececc251bb286, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1850853278 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11456534, guid: d95b7d2cb0c438a478dececc251bb286,
+    type: 2}
+  m_PrefabInternal: {fileID: 1850853277}
+  m_Script: {fileID: 11500000, guid: 31957ab02a8654b448736febf48c16e9, type: 3}
 --- !u!1 &1862786203 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 104168, guid: d95b7d2cb0c438a478dececc251bb286, type: 2}

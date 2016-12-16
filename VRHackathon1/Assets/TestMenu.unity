@@ -1808,7 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450546f5c90c35b42b7dbc525289edfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: VRGame
+  levelName: Level2
 --- !u!114 &2090134087
 MonoBehaviour:
   m_ObjectHideFlags: 0
