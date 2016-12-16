@@ -25,8 +25,6 @@ namespace VRStandardAssets.ShootingGallery
             //m_GunContainer.rotation = Quaternion.Slerp (m_GunContainer.rotation, lookAtRotation,
             transform.rotation = Quaternion.Slerp(m_GunContainer.rotation, lookAtRotation,
                 m_GunContainerSmoothing * Time.deltaTime);
-
-            Debug.LogWarning(string.Format("right position: {0} rotation: {1}", transform.position, transform.rotation));
         }
     }
 }

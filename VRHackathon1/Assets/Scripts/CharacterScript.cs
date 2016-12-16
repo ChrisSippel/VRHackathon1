@@ -11,6 +11,7 @@ public class CharacterScript : MonoBehaviour {
     public event Action onFire;
 
     private bool hasController = false;
+    public bool dead = false;
 
     // Use this for initialization
     void Start ()
@@ -29,6 +30,11 @@ public class CharacterScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (dead)
+        {
+            return;
+        }
+
         if (hasController)
         {
             MoveViaController(transform, MoveSpeed, DeadZone);
@@ -54,10 +60,46 @@ public class CharacterScript : MonoBehaviour {
         if (collision.gameObject.tag == "Bullet")
         {
             Rigidbody body = collision.gameObject.GetComponent<Rigidbody>();
-            Debug.Log("Hard hit" + body.velocity.z);
-            if (body.velocity.z > -12)
+            var vel = body.velocity;        //to get a Vector3 representation of the velocity
+            float speed = vel.magnitude;    // to get magnitude
+
+            if (speed >= 3 && speed <= 8)
             {
-                Debug.Log("Dead");
+                dead = true;
+                Debug.Log("DEAD");
+                Transform child = transform.FindChild("Top");
+                if (child != null)
+                {
+                    child.gameObject.AddComponent<Rigidbody>();
+                    child.parent = null;
+                }
+
+                child = transform.FindChild("Middle");
+                if (child != null)
+                {
+                    child.gameObject.AddComponent<Rigidbody>();
+                    child.parent = null;
+                }
+
+                child = transform.FindChild("Bottom");
+                if (child != null)
+                {
+                    child.gameObject.AddComponent<Rigidbody>();
+                    child.parent = null;
+                }
+
+                child = transform.FindChild("CameraMover");
+                if (child != null)
+                {
+                    child.gameObject.AddComponent<Rigidbody>();
+                    child.parent = null;
+                }
+
+                GameObject arm = transform.FindChild("LeftArm").gameObject;
+                arm.SetActive(false);
+
+                arm = transform.FindChild("RightArm").gameObject;
+                arm.SetActive(false);
             }
         }
     }
