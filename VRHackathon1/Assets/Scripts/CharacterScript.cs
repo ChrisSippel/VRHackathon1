@@ -69,8 +69,11 @@ public class CharacterScript : MonoBehaviour {
 
     private static void MoveViaController(Transform transform, float moveSpeed, float deadZone)
     {
+        Vector3 newForwardPosition = transform.position += (Camera.main.transform.forward * Input.GetAxis("LeftStickYAxis") * moveSpeed * Time.deltaTime) * -1;
+        newForwardPosition.Set(newForwardPosition.x, 6.23f, newForwardPosition.z);
+
         // Forward and Back
-        transform.position += (Camera.main.transform.forward * Input.GetAxis("LeftStickYAxis") * moveSpeed * Time.deltaTime) * -1;
+        transform.position = newForwardPosition;
 
         // Left and Right
         transform.position += Camera.main.transform.right * Input.GetAxis("LeftStickXAxis") * moveSpeed * Time.deltaTime;
