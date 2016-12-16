@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TestMenu.unity
+- path: Assets/VRGame.unity
   isLoaded: 1
   isActive: 1
