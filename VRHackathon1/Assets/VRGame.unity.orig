@@ -104,8 +104,9 @@ GameObject:
   - component: {fileID: 43608007}
   - component: {fileID: 43608006}
   - component: {fileID: 43608010}
+  - component: {fileID: 43608011}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: Finish Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,10 +175,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 43608004}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
@@ -203,6 +204,86 @@ MonoBehaviour:
   LevelCompletedAudioClip: {fileID: 8300000, guid: 18e14522edc271a419cd3c1ec497bde6,
     type: 3}
   m_VRCameraFade: {fileID: 1850853278}
+--- !u!82 &43608011
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 43608004}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 18e14522edc271a419cd3c1ec497bde6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &71360407
 Prefab:
   m_ObjectHideFlags: 0
@@ -607,7 +688,7 @@ Transform:
   m_GameObject: {fileID: 336473206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.3120418, y: 5.36, z: 7.861}
-  m_LocalScale: {x: 3.19, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1968092589}
   - {fileID: 43608005}
@@ -927,11 +1008,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &581719257 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4779051170561370, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1217889883}
 --- !u!1 &593085012
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1836,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4030352855545640, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.81
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 4030352855545640, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1795,17 +1871,6 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 2013005544}
-    - target: {fileID: 114569429905181468, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e,
-        type: 2}
-      propertyPath: snowballBullet
-      value: 
-      objectReference: {fileID: 54052212923458162, guid: 3de2299b18f817d4eab591b94cdff678,
-        type: 2}
-    - target: {fileID: 114569429905181468, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e,
-        type: 2}
-      propertyPath: BulletSpeed
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e, type: 2}
   m_IsPrefabParent: 0
@@ -2031,39 +2096,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1417425428}
   m_Mesh: {fileID: 4300006, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
---- !u!4 &1504168496 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4779051170561370, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e,
-    type: 2}
-  m_PrefabInternal: {fileID: 2048807590}
---- !u!1 &1505743631
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1505743632}
-  m_Layer: 0
-  m_Name: BarrelEnd
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1505743632
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1505743631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.46}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1504168496}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1642182410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1642182412}
   - component: {fileID: 1642182411}
-  - component: {fileID: 1642182413}
   m_Layer: 0
   m_Name: CameraMover
   m_TagString: Untagged
@@ -2114,18 +2145,6 @@ Transform:
   m_Father: {fileID: 2013005546}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1642182413
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1642182410}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.44, y: 0.69, z: 0.52}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1667689284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,8 +2444,16 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: 1160652871
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     m_RemovedComponents:
     - {fileID: 11451356, guid: d95b7d2cb0c438a478dececc251bb286, type: 2}
+=======
+    - target: {fileID: 11451356, guid: d95b7d2cb0c438a478dececc251bb286, type: 2}
+      propertyPath: m_MenuSceneName
+      value: TestMenu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+>>>>>>> Added level 2 maze and triggers
   m_ParentPrefab: {fileID: 100100000, guid: d95b7d2cb0c438a478dececc251bb286, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1850853278 stripped
@@ -2632,34 +2659,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 192dffb6ac3c1504e9098fc82e9f32d3, type: 3}
---- !u!1 &1976332123
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1976332124}
-  m_Layer: 0
-  m_Name: BarrelEnd
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1976332124
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1976332123}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.221}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 581719257}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991962049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,6 +2742,8 @@ GameObject:
   - component: {fileID: 2013005545}
   - component: {fileID: 2013005547}
   - component: {fileID: 2013005548}
+  - component: {fileID: 2013005549}
+  - component: {fileID: 2013005550}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -2763,15 +2764,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   DeadZone: 0.25
-  dead: 0
 --- !u!4 &2013005546
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2013005544}
+<<<<<<< HEAD
+  m_LocalRotation: {x: 0, y: 0.000001498028, z: -0, w: -1}
+  m_LocalPosition: {x: 10.31, y: 5.88, z: 6.64}
+=======
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 20.72, y: 5.88, z: 18.45}
+  m_LocalPosition: {x: 23.5, y: 5.88, z: 16.75}
+>>>>>>> Added level 2 maze and triggers
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 525815123}
@@ -2783,7 +2788,7 @@ Transform:
   - {fileID: 494127171}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1800, z: 0}
 --- !u!23 &2013005547
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2828,6 +2833,38 @@ CapsuleCollider:
   m_Height: 2.09
   m_Direction: 1
   m_Center: {x: -0.02, y: 0.42, z: 0}
+--- !u!54 &2013005549
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013005544}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 22.4
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!143 &2013005550
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013005544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2042685736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,7 +2955,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4030352855545640, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.74
+      value: 7.857
       objectReference: {fileID: 0}
     - target: {fileID: 4030352855545640, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2986,17 +3023,6 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114569429905181468, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e,
-        type: 2}
-      propertyPath: snowballBullet
-      value: 
-      objectReference: {fileID: 54052212923458162, guid: 3de2299b18f817d4eab591b94cdff678,
-        type: 2}
-    - target: {fileID: 114569429905181468, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e,
-        type: 2}
-      propertyPath: BulletSpeed
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114492785050262544, guid: 6b7beddec5e2cef4fa116d2e96e2ae5e, type: 2}
