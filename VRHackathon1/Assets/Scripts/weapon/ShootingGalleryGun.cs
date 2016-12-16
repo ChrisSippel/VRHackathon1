@@ -22,7 +22,8 @@ namespace VRStandardAssets.ShootingGallery
         [SerializeField] private GameObject[] m_FlareMeshes;                            // These are meshes of which one is randomly activated when the gun fires.
 
         // [SerializeField] private VRInput m_VRInput;                                     // Used to tell the gun when to fire.
-        // [SerializeField] private VREyeRaycaster m_EyeRaycaster;                         // Used to detect whether the gun is currently aimed at something.
+        [SerializeField] private CharacterScript m_Character;
+        [SerializeField] private VREyeRaycaster m_EyeRaycaster;                         // Used to detect whether the gun is currently aimed at something.
         [SerializeField] private Reticle m_Reticle;                                     // This is what the gun arm should be aiming at.
 
         private const float k_DampingCoef = -20f;                                       // This is the coefficient used to ensure smooth damping of this gameobject.
@@ -37,12 +38,14 @@ namespace VRStandardAssets.ShootingGallery
         private void OnEnable ()
         {
             // m_VRInput.OnDown += HandleDown;
+            m_Character.onFire += onFire;
         }
 
 
         private void OnDisable ()
         {
             // m_VRInput.OnDown -= HandleDown;
+            m_Character.onFire -= onFire;
         }
 
 
@@ -61,16 +64,16 @@ namespace VRStandardAssets.ShootingGallery
         }
 
 
-        private void HandleDown ()
+        private void onFire ()
         {
             // Otherwise, if there is an interactible currently being looked at, try to find it's ShootingTarget component.
-            // ShootingTarget shootingTarget = m_EyeRaycaster.CurrentInteractible ? m_EyeRaycaster.CurrentInteractible.GetComponent<ShootingTarget>() : null;
+            ShootingTarget shootingTarget = m_EyeRaycaster.CurrentInteractible ? m_EyeRaycaster.CurrentInteractible.GetComponent<ShootingTarget>() : null;
 
             // If there is a ShootingTarget component get it's transform as the target for shooting at.
-            // Transform target = shootingTarget ? shootingTarget.transform : null;
+            Transform target = shootingTarget ? shootingTarget.transform : null;
 
             // Start shooting at the target.
-            // StartCoroutine (Fire (target));
+            StartCoroutine (Fire (target));
         }
 
 

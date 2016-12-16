@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR;
@@ -6,6 +7,8 @@ using UnityEngine.VR;
 public class CharacterScript : MonoBehaviour {
     public float MoveSpeed;
     public float DeadZone = 0.25F;
+
+    public event Action onFire;
 
     private bool hasController = false;
 
@@ -26,6 +29,11 @@ public class CharacterScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetButtonDown("Fire1") && this.onFire != null)
+        {
+            this.onFire();
+        }
+
         if (hasController)
         {
             MoveViaController(transform, MoveSpeed, DeadZone);

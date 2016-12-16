@@ -767,6 +767,8 @@ MonoBehaviour:
   - {fileID: 1752090687}
   - {fileID: 2020287905}
   - {fileID: 754250910}
+  m_Character: {fileID: 2013005545}
+  m_EyeRaycaster: {fileID: 1659555875}
   m_Reticle: {fileID: 1171834210}
 --- !u!1 &1037052104
 GameObject:
@@ -3937,6 +3939,12 @@ ParticleSystem:
       minColor: {r: 1, g: 1, b: 1, a: 1}
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       minMaxState: 0
+--- !u!114 &1659555875 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11495966, guid: d95b7d2cb0c438a478dececc251bb286,
+    type: 2}
+  m_PrefabInternal: {fileID: 1850853277}
+  m_Script: {fileID: 11500000, guid: ffebc012055484b4899e163803755608, type: 3}
 --- !u!1 &1743021907
 GameObject:
   m_ObjectHideFlags: 0
