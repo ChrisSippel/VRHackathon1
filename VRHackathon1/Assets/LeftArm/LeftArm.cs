@@ -17,7 +17,7 @@ public class LeftArm : MonoBehaviour
 
     private Animator animator;
     private AudioSource audioSource;
-    private bool hasAmmo = false;
+    private bool hasAmmo = true;
 
     // Use this for initialization
     private void Start()
