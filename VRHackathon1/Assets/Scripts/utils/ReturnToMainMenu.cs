@@ -7,7 +7,7 @@ namespace VRStandardAssets.Utils
     // This class simply allows the user to return to the main menu.
     public class ReturnToMainMenu : MonoBehaviour
     {
-        [SerializeField] private string m_MenuSceneName = "MainMenu";   // The name of the main menu scene.
+        [SerializeField] private string m_MenuSceneName = "TestMenu";   // The name of the main menu scene.
         [SerializeField] private VRInput m_VRInput;                     // Reference to the VRInput in order to know when Cancel is pressed.
         [SerializeField] private VRCameraFade m_VRCameraFade;           // Reference to the script that fades the scene to black.
 
