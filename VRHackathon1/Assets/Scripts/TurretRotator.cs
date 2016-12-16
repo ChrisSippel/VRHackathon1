@@ -10,14 +10,15 @@ public class TurretRotator : MonoBehaviour
     public GameObject player;
 
     private GameObject turret;
-    private float FOV = 60f;
+    private float FOV = 180f;
+    private float turnRateRadians = 2 * Mathf.PI;
 
     Vector3 m_lastKnownPosition = Vector3.zero;
     Quaternion m_lookAtRotation;
 
     // Use this for initialization
     void Start () {
-        turret = GameObject.Find("Head");
+        turret = GameObject.Find("Top");
 	}
 	
 	// Update is called once per frame
@@ -25,30 +26,21 @@ public class TurretRotator : MonoBehaviour
     {
         if (LineOfSight(player.transform))
         {
-            if (m_lastKnownPosition != player.transform.position)
-            {
-                m_lastKnownPosition = player.transform.position;
-                m_lookAtRotation = Quaternion.LookRotation(m_lastKnownPosition - turret.transform.position);
-            }
-
-            if (turret.transform.rotation != m_lookAtRotation)
-            {
-                turret.transform.rotation = Quaternion.RotateTowards(turret.transform.rotation, m_lookAtRotation, FollowSpeed * Time.deltaTime);
-            }
+            turret.transform.rotation = Quaternion.LookRotation(turret.transform.position - player.transform.position);
         }
         else
         {
-            // there is something obstructing the view
-            transform.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * RotateSpeed), 0f);
+            //there is something obstructing the view
+            turret.transform.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * RotateSpeed), 0f);
         }
     }
 
     private bool LineOfSight(Transform target)
     {
         RaycastHit hit;
-
-        if (Vector3.Angle(target.position - transform.position, transform.forward) <= FOV &&
-            Physics.Linecast(transform.position, target.position, out hit) &&
+        bool withinFov = Vector3.Angle(target.position - turret.transform.position, turret.transform.forward) <= FOV;
+        if (withinFov &&
+            Physics.Linecast(turret.transform.position, target.position, out hit) &&
             hit.collider.transform == target)
         {
             return true;
