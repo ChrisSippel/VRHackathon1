@@ -16,7 +16,7 @@ public class TurretRotator : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-        turret = GameObject.Find("Top");
+        turret = transform.FindChild("Top").gameObject;
 	}
 	
 	// Update is called once per frame
@@ -59,9 +59,11 @@ public class TurretRotator : MonoBehaviour
     {
         RaycastHit hit;
         bool withinFov = Vector3.Angle(target.position - turret.transform.position, turret.transform.forward) <= FOV;
+        bool lineCast = Physics.Linecast(turret.transform.position, target.position, out hit);
+        bool sameTarget = hit.collider.transform == target;
         if (withinFov &&
-            Physics.Linecast(turret.transform.position, target.position, out hit) &&
-            hit.collider.transform == target)
+            lineCast &&
+            sameTarget)
         {
             return true;
         }
