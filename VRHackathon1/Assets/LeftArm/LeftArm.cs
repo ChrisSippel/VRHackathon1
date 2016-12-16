@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LeftArm : MonoBehaviour
 {
@@ -14,6 +12,7 @@ public class LeftArm : MonoBehaviour
     public int maxSpareRounds = 5;
     public int spareRounds = 3;
     public int currentRound = 0;
+    public string button = "Fire1";
 
     private Animator animator;
     private AudioSource audioSource;
@@ -30,7 +29,7 @@ public class LeftArm : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("Fire2") && !AnimatorIsPlaying())
+        if (Input.GetButtonDown(button) && !AnimatorIsPlaying())
         {
             if (hasAmmo)
             {
