@@ -18,17 +18,20 @@ public class TurretRotator : MonoBehaviour
     private Transform barrelEnd;
     private const float shootDelay = 2f;
     private static float shotDuration = 0;
-         
+    private CharacterScript character;
+
     // Use this for initialization
     void Start () {
         turret = transform.FindChild("Top").gameObject;
         barrelEnd = transform.FindChild("Top").FindChild("Cannon_2").FindChild("BarrelEnd");
+        character = player.GetComponent<CharacterScript>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (LineOfSight(player.transform))
+        if (LineOfSight(player.transform) &&
+            !character.dead)
         {
             turret.transform.rotation = Quaternion.LookRotation(turret.transform.position - player.transform.position);
 
