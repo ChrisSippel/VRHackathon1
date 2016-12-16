@@ -25,8 +25,6 @@ public class FrostScript : MonoBehaviour
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        Debug.Log("OnRenderImage");
-
         if (!Application.isPlaying)
         {
             material.SetTexture("_BlendTex", Frost);
@@ -38,7 +36,6 @@ public class FrostScript : MonoBehaviour
         material.SetFloat("_EdgeSharpness", EdgeSharpness);
         material.SetFloat("_SeeThroughness", seethroughness);
         material.SetFloat("_Distortion", distortion);
-        Debug.Log("_Distortion: " + distortion);
 
         Graphics.Blit(source, destination, material);
     }

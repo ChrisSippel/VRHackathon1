@@ -13,7 +13,7 @@ namespace VRStandardAssets.ShootingGallery
         [SerializeField] private float m_Damping = 0.5f;                                // The damping with which this gameobject follows the camera.
         [SerializeField] private float m_GunFlareVisibleSeconds = 0.07f;                // How long, in seconds, the line renderer and flare are visible for with each shot.
         [SerializeField] private float m_GunContainerSmoothing = 10f;                   // How fast the gun arm follows the reticle.
-        [SerializeField] private AudioSource m_GunAudio;                                // The audio source which plays the sound of the gun firing.
+        [SerializeField] public AudioSource m_GunAudio;                                // The audio source which plays the sound of the gun firing.
         [SerializeField] private Transform m_CameraTransform;                           // Used as a reference to move this gameobject towards.
         [SerializeField] private Transform m_GunContainer;                              // This contains the gun arm needs to be moved smoothly.
         [SerializeField] private Transform m_GunEnd;                                    // This is where the line renderer should start from.
@@ -27,11 +27,18 @@ namespace VRStandardAssets.ShootingGallery
         [SerializeField] private Reticle m_Reticle;                                     // This is what the gun arm should be aiming at.
 
         private const float k_DampingCoef = -20f;                                       // This is the coefficient used to ensure smooth damping of this gameobject.
+        private AudioSource gunSound;
+        public AudioClip clip;
 
+        private float fireRate = 20f;
+        private float lastShot = 0.0f;
 
         private void Awake()
         {
             m_GunFlare.enabled = false;
+            gunSound = gameObject.GetComponent<AudioSource>();
+            gunSound.enabled = true;
+            gunSound.clip = clip;
         }
 
 
@@ -51,6 +58,8 @@ namespace VRStandardAssets.ShootingGallery
 
         private void Update()
         {
+            return;
+
             // Move this gameobject to the camera.
             transform.position = m_CameraTransform.position;
 
@@ -79,8 +88,16 @@ namespace VRStandardAssets.ShootingGallery
 
         private IEnumerator Fire(Transform target)
         {
+            if (Time.time <= fireRate + lastShot)
+            {
+                yield return null;
+            }
+
+            lastShot = Time.time;
+
             // Play the sound of the gun firing.
-            m_GunAudio.Play();
+            ////m_GunAudio.Play();
+            AudioSource.PlayClipAtPoint(clip, transform.position);
 
             // Set the length of the line renderer to the default.
             float lineLength = m_DefaultLineLength;

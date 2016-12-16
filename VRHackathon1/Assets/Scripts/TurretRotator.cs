@@ -8,13 +8,11 @@ public class TurretRotator : MonoBehaviour
     public float RotateSpeed = 2f;
     public float maxRotation = 45f;
     public GameObject player;
+    public int Health = 0;
 
     private GameObject turret;
     private float FOV = 180f;
-    private float turnRateRadians = 2 * Mathf.PI;
-
     Vector3 m_lastKnownPosition = Vector3.zero;
-    Quaternion m_lookAtRotation;
 
     // Use this for initialization
     void Start () {
@@ -32,6 +30,28 @@ public class TurretRotator : MonoBehaviour
         {
             //there is something obstructing the view
             turret.transform.rotation = Quaternion.Euler(0f, maxRotation * Mathf.Sin(Time.time * RotateSpeed), 0f);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Health--;
+        }
+
+        if (Health < 0)
+        {
+            CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+            capsuleCollider.enabled = false;
+            Rigidbody collisionRigidBody = collision.gameObject.GetComponent<Rigidbody>();
+
+            foreach (Transform child in transform)
+            {
+                Rigidbody rigidBody = child.GetComponent<Rigidbody>();
+                rigidBody.isKinematic = false;
+                rigidBody.AddForce(collisionRigidBody.velocity, ForceMode.VelocityChange);
+            }
         }
     }
 
